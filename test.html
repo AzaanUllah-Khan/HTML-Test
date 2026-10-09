@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML Grand Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">&lt;/&gt;</span><span>HTML Grand Test <span class="meta">| 100 Questions
+          · 60 Minutes</span></span></div>
+    <div class="timer-wrap">
+      <div class="timer-label">Time remaining</div>
+      <div class="timer" id="timer">60:00</div>
+    </div>
+  </header>
+  <main>
+    <section id="startScreen" class="screen active">
+      <div class="start-card">
+        <div class="eyebrow">Web Development Course</div>
+        <h1>HTML Grand Test</h1>
+        <p class="lead">Test your HTML knowledge across document structure, links, images, lists, tables, forms,
+          attributes, semantic elements, code recognition and browser output.</p>
+        <div class="start-details">
+          <div class="detail"><strong>100</strong><span>Multiple-choice questions</span></div>
+          <div class="detail"><strong>60 min</strong><span>Time limit</span></div>
+          <div class="detail"><strong>100 marks</strong><span>1 mark per question</span></div>
+        </div>
+        <label class="name-field">Student name <input id="studentName" type="text" placeholder="Enter your full name"
+            autocomplete="name"></label>
+        <p class="lead">Questions will be shuffled for each attempt. Your answers are kept in this browser during the
+          test. When time runs out, the test submits automatically.</p>
+        <div class="start-actions"><button class="btn primary wide" id="startBtn">Start test →</button></div>
+      </div>
+    </section>
+
+    <section id="testScreen" class="screen">
+      <div class="layout">
+        <section class="panel question-panel">
+          <div class="progress-line">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="question-kicker" id="questionKicker">Question 1 of 100</div>
+          <h1 class="question-title" id="questionText"></h1>
+          <div class="options" id="options"></div>
+          <div class="question-footer">
+            <button class="btn" id="prevBtn">← Previous</button>
+            <button class="btn primary" id="nextBtn">Next →</button>
+          </div>
+        </section>
+        <aside class="panel navigator">
+          <h2 class="side-title">Question navigator</h2>
+          <div class="nav-grid" id="navGrid"></div>
+          <div class="legend">
+            <span><i class="swatch blue"></i>Current</span>
+            <span><i class="swatch green"></i>Answered</span>
+            <span><i class="swatch"></i>Not answered</span>
+          </div>
+          <div class="side-note"><span id="answeredCount">0</span> of 100 answered. You can jump to any question using
+            the navigator. Your answers are saved as you go.</div>
+          <button class="btn wide" style="margin-top:16px" id="finishBtn">Submit test</button>
+        </aside>
+      </div>
+    </section>
+
+    <section id="violationScreen" class="screen">
+      <div class="result-card">
+        <div class="eyebrow">Attempt ended</div>
+        <h1>Test stopped</h1>
+        <p class="lead" id="violationReason">The test was ended because fullscreen was exited or the test window lost
+          focus.</p>
+        <p>This attempt has been invalidated. You must start a new attempt to take the test again. Your previous answers
+          will not be scored.</p>
+        <div class="result-actions">
+          <button class="btn primary" id="retakeBtn">Start a new attempt</button>
+        </div>
+      </div>
+    </section>
+    <section id="resultScreen" class="screen">
+      <div class="result-card">
+        <div class="eyebrow">Test completed</div>
+        <h1 id="resultHeading">Your results</h1>
+        <p class="lead" id="resultIntro"></p>
+        <div class="score-row">
+          <div class="score-circle"><strong id="scorePercent">0%</strong><span>Final score</span></div>
+          <div class="result-stats">
+            <div class="stat"><strong id="correctCount">0</strong><span>Correct</span></div>
+            <div class="stat"><strong id="incorrectCount">0</strong><span>Incorrect</span></div>
+            <div class="stat"><strong id="unansweredCount">0</strong><span>Unanswered</span></div>
+          </div>
+        </div>
+        <p><strong id="scoreLine">0 / 100 marks</strong> · Time used: <span id="timeUsed">00:00</span></p>
+        <div class="result-actions">
+          <button class="btn primary" id="reviewBtn">Review answers</button>
+          <button class="btn" id="downloadBtn">Download results (.txt)</button>
+          <button class="btn" id="restartBtn">New attempt</button>
+        </div>
+        <div class="review" id="reviewSection" hidden>
+          <h2>Answer review</h2>
+          <p class="lead">Correct answers and your selected responses are shown below.</p>
+          <div id="reviewList"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><span>HTML Grand Test</span><span>Web Development Course · 100 marks</span></footer>
+
+  <div class="confirm-backdrop" id="confirmBackdrop" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="confirm-box">
+      <h2 id="confirmTitle">Submit your test?</h2>
+      <p id="confirmMessage">Your answers will be submitted and you will see your results.</p>
+      <div class="confirm-buttons"><button class="btn" id="cancelSubmit">Keep working</button><button
+          class="btn primary" id="confirmSubmit">Submit test</button></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
